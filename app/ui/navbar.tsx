@@ -40,17 +40,17 @@ const Navbar = (props: Props) => {
       className="flex justify-center items-start py-10 
             bg-navbar-mobile h-[172px] bg-cover 
             md:bg-navbar-desktop md:h-[568px] 
-            md:w-[274px] md:flex-col md:justify-start md:space-y-6"
+            md:w-2/3 md:flex-col md:justify-start md:space-y-6"
     >
       {links.map((link, i) => {
         return (
-          <div className="flex ml-2 md:ml-6 ">
+          <div className="flex ml-2 md:ml-6 text-white font-medium">
             <Link
               id="link"
               key={link.name}
               href={link.href}
               className={clsx(
-                "border-2 text-white px-3 py-1 md:py rounded-full hover:bg-white hover:text-black",
+                "border-2 px-3 py-1 md:py rounded-full hover:bg-white hover:text-black",
                 {
                   "bg-white text-black": pathname === link.href,
                 }

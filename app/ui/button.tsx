@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 const Button = (props: Props) => {
   return (
-    <button className='border rounded-full p-2 absolute hover:bg-white hover:text-black text-white text-sm'>1</button>
-  )
-}
+    <button className="border p-2 text-white bg-blue-900 rounded-lg hover:bg-blue-600">
+      Next Step
+    </button>
+  );
+};
 
-export default Button
+export default Button;
