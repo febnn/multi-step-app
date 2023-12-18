@@ -21,7 +21,7 @@ const links = [
   },
   {
     name: "Add-Ons",
-    href: "/add-ons",
+    href: "/addons",
     step: "STEP 3",
     title: "ADD-ONS",
   },
