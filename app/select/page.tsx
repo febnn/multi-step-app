@@ -3,6 +3,7 @@
 import Card from "@/ui/card";
 import SelectCard from "@/ui/select/select-card";
 import Switcher from "@/ui/select/switcher";
+import StepButtons from "@/ui/step-btns";
 import React, { useState } from "react";
 
 type Props = {};
@@ -52,6 +53,7 @@ const Select = (props: Props) => {
           <Switcher checked={toggle} handleToggle={handleToggle} />
         </div>
       </Card>
+      <StepButtons />
     </div>
   );
 };

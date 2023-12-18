@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ubuntu } from "@/ui/fonts";
 import "./globals.css";
 import Navbar from "./ui/navbar";
-import Footer from "./ui/footer";
+import Footer from "./ui/step-btns";
 
 export const metadata: Metadata = {
   title: "Multi-step app",
@@ -19,13 +19,13 @@ export default function RootLayout({
       <body className={`${ubuntu.className} antialiased bg-gray-200`}>
         <div
           className="flex flex-col h-screen md:flex-row md:mx-auto 
-          md:max-w-3xl md:mt-20 md:p-4 bg-gray-200 rounded-lg md:mix-h-[568px]
+          md:max-w-3xl md:mt-20 md:p-4 bg-gray-200 rounded-lg md:w-full
           md:max-h-[600px] md:bg-white relative
         "
         >
           <Navbar />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </body>
     </html>
