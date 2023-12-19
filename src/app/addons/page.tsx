@@ -1,6 +1,6 @@
-import SelectAddon from "@/ui/addons/select-addon";
-import Card from "@/ui/card";
-import StepButtons from "@/ui/step-btns";
+import SelectAddon from "@/app/ui/addons/select-addon";
+import Card from "@/app/ui/card";
+import StepButtons from "@/app/ui/step-btns";
 import React from "react";
 
 type Props = {};

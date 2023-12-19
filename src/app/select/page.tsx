@@ -1,9 +1,9 @@
 "use client";
 
-import Card from "@/ui/card";
-import SelectCard from "@/ui/select/select-card";
-import Switcher from "@/ui/select/switcher";
-import StepButtons from "@/ui/step-btns";
+import Card from "@/app/ui/card";
+import SelectCard from "@/app/ui/select/select-card";
+import Switcher from "@/app/ui/select/switcher";
+import StepButtons from "@/app/ui/step-btns";
 import React, { useState } from "react";
 
 type Props = {};

@@ -1,6 +1,6 @@
-import Card from "@/ui/card";
-import StepButtons from "@/ui/step-btns";
-import SummaryCard from "@/ui/summary/summary-card";
+import Card from "@/app/ui/card";
+import StepButtons from "@/app/ui/step-btns";
+import SummaryCard from "@/app/ui/summary/summary-card";
 import React from "react";
 
 type Props = {};
