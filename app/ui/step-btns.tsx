@@ -26,7 +26,7 @@ const StepButtons = (props: Props) => {
         >
           Go Back
         </p>
-        <Button />
+        <Button type="submit">Next Step</Button>
       </div>
     </div>
   );

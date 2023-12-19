@@ -21,7 +21,7 @@ const selectOptions = [
   },
   {
     image: "icon-arcade.svg",
-    title: "Arcade",
+    title: "Pro",
     price: { monthly: "$15/mo", yearly: "$150/yr" },
   },
 ];

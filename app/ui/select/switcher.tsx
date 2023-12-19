@@ -20,7 +20,7 @@ const Switcher = (props: Props) => {
         <span className="relative">
           <input
             onClick={handleToggle}
-            checked={checked}
+            defaultChecked={checked}
             id="Toggle1"
             type="checkbox"
             className="hidden peer"

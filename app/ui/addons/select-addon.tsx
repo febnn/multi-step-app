@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import clsx from "clsx";
+import { useState } from "react";
 
 type Props = {
   title: string;
@@ -23,7 +22,7 @@ const SelectAddon = (props: Props) => {
       <input
         className="h-4 w-4 ml-1 hover:border-blue-700"
         type="checkbox"
-        checked={toggle}
+        defaultChecked={toggle}
       />
       <div className="ml-4">
         <h3 className="font-bold">{title}</h3>
