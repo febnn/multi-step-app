@@ -44,10 +44,12 @@ const Navbar = (props: Props) => {
     >
       {links.map((link, i) => {
         return (
-          <div className="flex ml-2 md:ml-6 text-white font-medium">
+          <div
+            className="flex ml-2 md:ml-6 text-white font-medium"
+            key={link.name}
+          >
             <Link
               id="link"
-              key={link.name}
               href={link.href}
               className={clsx(
                 "border-2 px-3 py-1 md:py rounded-full hover:bg-white hover:text-black",

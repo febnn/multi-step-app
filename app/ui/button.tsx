@@ -1,11 +1,16 @@
 import React from "react";
 
-type Props = {};
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
 
-const Button = (props: Props) => {
+const Button = ({ children, className, ...rest }: ButtonProps) => {
   return (
-    <button className="border p-2 text-white bg-blue-900 rounded-lg hover:bg-blue-600">
-      Next Step
+    <button
+      {...rest}
+      className="border p-2 text-white bg-blue-900 rounded-lg hover:bg-blue-600"
+    >
+      {children}
     </button>
   );
 };

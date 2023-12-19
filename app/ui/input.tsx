@@ -1,25 +1,17 @@
 import React from "react";
 
-type Props = {
-  placeholder: string;
-  id: string;
-  type: string;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  // children: React.ReactNode;
   label: string;
-};
+}
 
-const Input = ({ placeholder, id, type, label }: Props) => {
+const Input = ({ children, id, label, ...rest }: InputProps) => {
   return (
     <div className="flex flex-col mb-5">
       <label htmlFor={id} className="text-sm">
         {label}
       </label>
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        className="border p-2 rounded-lg pl-4"
-        required
-      />
+      <input id={id} {...rest} className="border p-2 rounded-lg pl-4" />
     </div>
   );
 };
