@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAppSelector } from "../redux/hooks";
 
 type Props = {};
 
@@ -35,6 +36,13 @@ const links = [
 
 const Navbar = (props: Props) => {
   const pathname = usePathname();
+  const isUserCreated = useAppSelector((state) => state.app.userCreated);
+
+  // const onClick = () => {
+  //   if (!isUserCreated) {
+  //     alert("create a user");
+  //   }
+  // };
   return (
     <div
       className="flex justify-center items-start py-10 
@@ -47,7 +55,9 @@ const Navbar = (props: Props) => {
           <div
             className="flex ml-2 md:ml-6 text-white font-medium"
             key={link.name}
+            // onClick={onClick}
           >
+            {/* !isUserCreated ? "/" :  */}
             <Link
               id="link"
               href={link.href}
