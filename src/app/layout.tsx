@@ -2,6 +2,10 @@ import { ubuntu } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./ui/navbar";
+import StoreProvider from "./redux/StoreProvider";
+import { useLayoutEffect } from "react";
+import { isUserCreated } from "./lib/utils/authVars";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Multi-step app",
@@ -14,18 +18,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${ubuntu.className} antialiased bg-gray-200`}>
-        <div
-          className="flex flex-col h-screen md:flex-row md:mx-auto 
+    <StoreProvider>
+      <html lang="en">
+        <body className={`${ubuntu.className} antialiased bg-gray-200`}>
+          <div
+            className="flex flex-col h-screen md:flex-row md:mx-auto 
           md:max-w-3xl md:mt-20 md:p-4 bg-gray-200 rounded-lg md:w-full
           md:max-h-[600px] md:bg-white relative
         "
-        >
-          <Navbar />
-          {children}
-        </div>
-      </body>
-    </html>
+          >
+            <Navbar />
+            {children}
+          </div>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }

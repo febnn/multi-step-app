@@ -1,20 +1,17 @@
 import Image from "next/image";
 import React from "react";
 
-type Props = {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   image: string;
   title: string;
-  price: string;
+  price: number;
   discount: boolean;
-};
+}
 
 const SelectCard = (props: Props) => {
-  const { image, price, title, discount } = props;
+  const { image, price, title, discount, onClick, ...rest } = props;
   return (
-    <div
-      className="border flex p-3 rounded-lg hover:border-blue-900
-     hover:bg-blue-50 mb-3 md:flex-col md:min-w-[115px]"
-    >
+    <div onClick={onClick}>
       <Image
         className="md:mb-8"
         src={image}
@@ -24,7 +21,10 @@ const SelectCard = (props: Props) => {
       />
       <div className="pl-3 md:pl-0">
         <h2 className="font-bold">{title}</h2>
-        <p className="text-sm font-thin text-gray-400">{price}</p>
+        <p className="text-sm font-thin text-gray-400">
+          ${price}
+          <span>{discount ? "/yr" : "/mo"}</span>
+        </p>
         {discount && <p className="text-xs mt-1">2 months free </p>}
       </div>
     </div>

@@ -5,9 +5,11 @@ import Button from "./button";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-type Props = {};
+type Props = {
+  onSubmit?: () => void;
+};
 
-const StepButtons = (props: Props) => {
+const StepButtons = ({ onSubmit }: Props) => {
   const pathname = usePathname();
   return (
     <div
@@ -26,7 +28,7 @@ const StepButtons = (props: Props) => {
         >
           Go Back
         </p>
-        <Button type="submit">Next Step</Button>
+        <Button onClick={onSubmit}>Next Step</Button>
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import Info from "./ui/info/info";
 
 export default function Home() {
