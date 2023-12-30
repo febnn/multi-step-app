@@ -10,9 +10,9 @@ type Props = {};
 const SummaryCard = (props: Props) => {
   const plan = useAppSelector((state) => state.app.plan);
   const isMonthly = useAppSelector((state) => state.app.isMonthly);
-  const totalPlan = isMonthly
-    ? useAppSelector((state) => state.app.plan.price.yearly)
-    : useAppSelector((state) => state.app.plan.price.monthly);
+  const yearly = useAppSelector((state) => state.app.plan.price.yearly);
+  const monthly = useAppSelector((state) => state.app.plan.price.monthly);
+  const totalPlan = isMonthly ? yearly : monthly;
   const addons = useAppSelector((state) => state.app.addons);
 
   let totalAddonMonthly;
