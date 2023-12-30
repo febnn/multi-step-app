@@ -1,11 +1,8 @@
 import { ubuntu } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./ui/navbar";
 import StoreProvider from "./redux/StoreProvider";
-import { useLayoutEffect } from "react";
-import { isUserCreated } from "./lib/utils/authVars";
-import { redirect } from "next/navigation";
+import Navbar from "./ui/navbar";
 
 export const metadata: Metadata = {
   title: "Multi-step app",

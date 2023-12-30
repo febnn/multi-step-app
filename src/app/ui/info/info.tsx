@@ -1,73 +1,81 @@
 "use client";
 
+import { changeEmail, changeName, changeNumber } from "@/app/redux/appSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, useState } from "react";
 import Card from "../card";
 import Input from "../input";
 import StepButtons from "../step-btns";
-import {
-  changeEmail,
-  changeName,
-  changeNumber,
-  userCreated,
-} from "@/app/redux/appSlice";
-import { redirect, useRouter } from "next/navigation";
-import {
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
 
 const Info = () => {
   const router = useRouter();
-  const name = useAppSelector((state) => state.app.name);
-  const email = useAppSelector((state) => state.app.email);
-  const phoneNumber = useAppSelector((state) => state.app.phoneNumber);
-  const isUserCreated = useAppSelector((state) => state.app.userCreated);
+  const nameState = useAppSelector((state) => state.app.name);
+  const emailState = useAppSelector((state) => state.app.email);
+  const phoneNumberState = useAppSelector((state) => state.app.phoneNumber);
   const dispatch = useAppDispatch();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
 
   const [isNameEmpty, setIsNameEmpty] = useState(false);
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
   const [isNumberEmpty, setIsNumberEmpty] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(changeName(e.target.value));
+    setName(e.target.value);
   };
 
+  function isValidEmail(email: string) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeEmail(e.target.value));
+    const email = e.target.value;
+    setEmail(email);
+    dispatch(changeEmail(email));
   };
 
   const onChangeNumber = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(changeNumber(e.target.value));
+    setphoneNumber(e.target.value);
   };
 
   const handleSubmit = () => {
-    if (!name.trim()) {
+    if (!nameState.trim()) {
       setIsNameEmpty(true);
     } else {
       setIsNameEmpty(false);
     }
-    if (!email.trim()) {
+    if (!emailState.trim()) {
       setIsEmailEmpty(true);
     } else {
       setIsEmailEmpty(false);
     }
-    if (!phoneNumber.trim()) {
+    if (!phoneNumberState.trim()) {
       setIsNumberEmpty(true);
     } else {
       setIsNumberEmpty(false);
     }
 
-    if (name.trim() && email.trim() && phoneNumber.trim()) {
-      dispatch(userCreated(true));
+    if (
+      nameState.trim() &&
+      isValidEmail(emailState) &&
+      emailState.trim() &&
+      phoneNumberState.trim()
+    ) {
       router.push("/select");
+    } else {
+      setIsValid(true);
     }
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Card
         title="Personal info"
         description="Please provide your name, email address, and phone number."
@@ -78,20 +86,22 @@ const Info = () => {
           type="text"
           label="Name"
           name="name"
-          defaultValue={name}
+          defaultValue={name || nameState}
           onChange={onChangeName}
           isFieldEmpty={isNameEmpty}
+          required
         />
-
         <Input
           id="email"
           label="Email Address"
           placeholder="e.g. stephenking@lorem.com"
           type="email"
           name="email"
-          defaultValue={email}
+          defaultValue={email || emailState}
           onChange={onChangeEmail}
           isFieldEmpty={isEmailEmpty}
+          isEmailValid={isValid}
+          required
         />
 
         <Input
@@ -100,12 +110,13 @@ const Info = () => {
           placeholder="e.g. +1 234 567 890"
           type="number"
           name="number"
-          defaultValue={phoneNumber}
+          defaultValue={phoneNumber || phoneNumberState}
           onChange={onChangeNumber}
           isFieldEmpty={isNumberEmpty}
+          required
         />
       </Card>
-      <StepButtons onSubmit={handleSubmit} />
+      <StepButtons link="/select" onSubmit={handleSubmit} />
     </div>
   );
 };
