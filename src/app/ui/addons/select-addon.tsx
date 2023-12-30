@@ -10,6 +10,7 @@ interface SelectAddon extends React.HTMLAttributes<HTMLDivElement> {
 
 const SelectAddon: React.FC<SelectAddon> = ({ addon, onClick }) => {
   const stateAddon = useAppSelector((state) => state.app.addons);
+  const isMonthly = useAppSelector((state) => state.app.isMonthly);
 
   const addons = stateAddon?.map((addon) => addon.id);
   const { title, price, description, id } = addon;
@@ -38,7 +39,7 @@ const SelectAddon: React.FC<SelectAddon> = ({ addon, onClick }) => {
         <p className="text-sm text-gray-400">{description}</p>
       </div>
       <div className="absolute right-3 text-sm text-blue-700">
-        +${price?.monthly}
+        +${isMonthly ? `${price?.yearly}/yr` : `${price.monthly}/mo`}
         <span></span>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { Addon } from "@/app/types/types";
 import SelectAddon from "@/app/ui/addons/select-addon";
 import Card from "@/app/ui/card";
 import StepButtons from "@/app/ui/step-btns";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
@@ -35,6 +36,10 @@ const AddOns = (props: Props) => {
   const onSelect = (e: Addon) => {
     dispatch(addDeleteAddon(e));
   };
+  const router = useRouter();
+  const onNext = () => {
+    router.push("/summary");
+  };
 
   return (
     <div className="w-full">
@@ -54,7 +59,7 @@ const AddOns = (props: Props) => {
           })}
         </div>
       </Card>
-      <StepButtons />
+      <StepButtons link="/select" onSubmit={onNext} />
     </div>
   );
 };

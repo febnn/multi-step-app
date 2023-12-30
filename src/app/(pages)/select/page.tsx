@@ -8,12 +8,13 @@ import SelectCard from "@/app/ui/select/select-card";
 import Switcher from "@/app/ui/select/switcher";
 import StepButtons from "@/app/ui/step-btns";
 import clsx from "clsx";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const Select = (props: Props) => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const plan = useAppSelector((state) => state.app.plan);
   const isMonthly = useAppSelector((state) => state.app.isMonthly);
   const handleOptionClick = (option: Option) => {
@@ -38,6 +39,10 @@ const Select = (props: Props) => {
     },
   ];
 
+  const onNext = () => {
+    router.push("/addons");
+  };
+
   const handleToggle = () => dispatch(changeMonthly(!isMonthly));
   return (
     <div className="w-full">
@@ -51,6 +56,7 @@ const Select = (props: Props) => {
             return (
               <div
                 key={title}
+                onClick={() => handleOptionClick(option)}
                 className={clsx(
                   "border flex p-3 rounded-lg hover:border-blue-900 hover:bg-blue-50 mb-3 md:flex-col md:min-w-[115px] cursor-pointer",
                   {
@@ -63,7 +69,6 @@ const Select = (props: Props) => {
                   price={isMonthly ? price.yearly : price.monthly}
                   title={title}
                   discount={isMonthly}
-                  onClick={() => handleOptionClick(option)}
                 />
               </div>
             );
@@ -73,7 +78,7 @@ const Select = (props: Props) => {
           <Switcher checked={isMonthly} handleToggle={handleToggle} />
         </div>
       </Card>
-      <StepButtons />
+      <StepButtons link="/" onSubmit={onNext} />
     </div>
   );
 };

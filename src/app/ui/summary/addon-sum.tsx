@@ -1,12 +1,19 @@
+import { useAppSelector } from "@/app/redux/hooks";
+import { Addon } from "@/app/types/types";
 import React from "react";
 
-type Props = {};
+type Props = {
+  addon: Addon;
+};
 
-const AddonSum = (props: Props) => {
+const AddonSum = ({ addon }: Props) => {
+  const isMonthly = useAppSelector((state) => state.app.isMonthly);
   return (
     <div className="flex justify-between pt-4">
-      <p>Online service</p>
-      <p className="text-black">+10/yr</p>
+      <p>{addon?.title}</p>
+      <p className="text-black">
+        +{isMonthly ? `${addon.price.yearly}/yr` : `${addon.price.monthly}/mo`}
+      </p>
     </div>
   );
 };

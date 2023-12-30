@@ -1,9 +1,9 @@
 import React from "react";
 
 type Props = {
-  children: React.ReactNode;
-  title: string;
-  description: string;
+  children?: React.ReactNode;
+  title?: string;
+  description?: string;
 };
 
 const Card = ({ children, title, description }: Props) => {

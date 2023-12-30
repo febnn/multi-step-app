@@ -1,9 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAppSelector } from "../redux/hooks";
 
 type Props = {};
 
@@ -36,13 +34,7 @@ const links = [
 
 const Navbar = (props: Props) => {
   const pathname = usePathname();
-  const isUserCreated = useAppSelector((state) => state.app.userCreated);
 
-  // const onClick = () => {
-  //   if (!isUserCreated) {
-  //     alert("create a user");
-  //   }
-  // };
   return (
     <div
       className="flex justify-center items-start py-10 
@@ -55,21 +47,15 @@ const Navbar = (props: Props) => {
           <div
             className="flex ml-2 md:ml-6 text-white font-medium"
             key={link.name}
-            // onClick={onClick}
           >
-            {/* !isUserCreated ? "/" :  */}
-            <Link
+            <div
               id="link"
-              href={link.href}
-              className={clsx(
-                "border-2 px-3 py-1 md:py rounded-full hover:bg-white hover:text-black",
-                {
-                  "bg-white text-black": pathname === link.href,
-                }
-              )}
+              className={clsx("border-2 px-3 py-1 md:py rounded-full", {
+                "bg-white text-black": pathname === link.href,
+              })}
             >
               {i + 1}
-            </Link>
+            </div>
             <div className="hidden md:flex md:flex-col ml-3 tracking-wider">
               <p className="text-xs text-gray-400">{link.step}</p>
               <h2 className="font-bold text-white text-sm">{link.title}</h2>

@@ -16,7 +16,7 @@ const initialState: AppState = {
   name: "",
   email: "",
   phoneNumber: "",
-  isMonthly: true,
+  isMonthly: false,
   plan: {
     title: "Arcade",
     image: "icon-arcade.svg",

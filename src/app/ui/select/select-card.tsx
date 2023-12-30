@@ -9,9 +9,9 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const SelectCard = (props: Props) => {
-  const { image, price, title, discount, onClick, ...rest } = props;
+  const { image, price, title, discount, ...rest } = props;
   return (
-    <div onClick={onClick}>
+    <div className="flex md:flex-col">
       <Image
         className="md:mb-8"
         src={image}
